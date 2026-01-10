@@ -1,5 +1,8 @@
 ---
-// src/components/Features.astro
+// 1. Importamos el componente de imagen y la imagen local
+import { Image } from "astro:assets";
+import velaFeatures from "../assets/images/vela1.png";
+
 const benefits = [
   {
     title: "Cera de Soja 100% Natural",
@@ -68,10 +71,11 @@ const benefits = [
 
       <div class="relative">
         <div class="aspect-4/5 rounded-2xl overflow-hidden shadow-2xl">
-          <img
-            src="/src/assets/images/vela1.png"
-            alt="Detalle de vela artesanal"
+          <Image
+            src={velaFeatures}
+            alt="Detalle de vela artesanal de soja"
             class="w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
         <div
