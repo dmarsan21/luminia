@@ -1,43 +1,29 @@
-# Astro Starter Kit: Minimal
+# 🕯️ LUMINA - Velas Artesanales & Bienestar
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+**LUMINA** es una plataforma de comercio electrónico premium diseñada para una marca de velas artesanales. El sitio se enfoca en ofrecer una experiencia de usuario minimalista, sofisticada y envolvente, transmitiendo los valores de paz y bienestar de la marca.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## ✨ Características Principales
 
-Inside of your Astro project, you'll see the following folders and files:
+- 🚀 **Alto Rendimiento:** Desarrollado con **Astro**, logrando tiempos de carga ultrarrápidos y una hidratación de JavaScript mínima.
+- 🎨 **Diseño Editorial:** Estética de lujo utilizando **Tailwind CSS v4** con una paleta de colores tierra y tipografía Serif refinada.
+- 📱 **Totalmente Responsive:** Experiencia optimizada para móviles con navegación personalizada y menús adaptables.
+- 🎡 **Interactividad Dinámica:**
+  - Carrusel de reseñas automático con pausa por interacción.
+  - Barra de anuncios con animaciones CSS suaves (`keyframes`).
+  - Secciones de "Features" y "Productos Destacados" con efectos de hover.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 🛠️ Tecnologías Utilizadas
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- **Framework:** [Astro](https://astro.build/)
+- **Estilos:** [Tailwind CSS](https://tailwindcss.com/)
+- **Fuentes:** Google Fonts (Lora & Sans-Serif)
+- **Despliegue sugerido:** Vercel / Netlify
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 🚀 Instalación y Desarrollo
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/dmarsan21/luminia.git](https://github.com/dmarsan21/luminia.git)
+   ```
