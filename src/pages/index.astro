@@ -1,16 +1,53 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import ProductCard from "../components/ProductCard.astro";
+import ClientReviews from "../components/ClientReviews.astro";
 
+// Importación de tus nuevas imágenes
+import vela1 from "../assets/images/vela1.png";
+import vela2 from "../assets/images/vela2.png";
+import vela3 from "../assets/images/vela3.png";
+import Features from "../components/Features.astro";
+import FeaturedProducts from "../components/FeaturedProducts.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Luz & Calma - Velas Artesanales">
+  <Hero />
+
+  <main class="max-w-7xl mx-auto px-4 py-16">
+    <header class="mb-12 text-center">
+      <h2 class="text-3xl font-serif text-stone-800">Nuestra Colección</h2>
+      <p class="text-stone-500 mt-2 italic">
+        Aromas diseñados para tu bienestar
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <ProductCard
+        name="Serenidad Minimal"
+        aroma="Vainilla y Coco"
+        price="$250 MXN"
+        imageUrl={vela1.src}
+        isNew={true}
+      />
+
+      <ProductCard
+        name="Refugio en la Cabaña"
+        aroma="Pino y Sándalo"
+        price="$280 MXN"
+        imageUrl={vela2.src}
+      />
+
+      <ProductCard
+        name="Yoga & Calma"
+        aroma="Eucalipto y Lavanda"
+        price="$320 MXN"
+        imageUrl={vela3.src}
+      />
+    </div>
+    <ClientReviews />
+    <Features />
+    <FeaturedProducts />
+  </main>
+</Layout>

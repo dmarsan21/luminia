@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #78716c; /* Un gris piedra elegante */
+  --color-brand-accent: #b45309; /* Un ámbar cálido como la llama */
+  --color-brand-bg: #fafaf9; /* El color crema de fondo */
+
+  --font-serif: "Lora", serif;
+}

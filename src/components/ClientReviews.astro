@@ -1,0 +1,134 @@
+---
+// src/components/Reviews.astro
+const reviews = [
+  {
+    name: "Ana Sofía L.",
+    rating: 5,
+    text: "La vela de lavanda es increíblemente relajante. El aroma llena toda la habitación sin ser abrumador. ¡Definitivamente compraré de nuevo!",
+  },
+  {
+    name: "Isabella M.",
+    rating: 5,
+    text: "Me encanta la estética minimalista de las velas. Se ven hermosas en mi sala de estar. La de sándalo es mi favorita, muy elegante y cálida.",
+  },
+  {
+    name: "Valentina R.",
+    rating: 4,
+    text: "El empaque es precioso y las velas huelen de maravilla. Le doy 4 estrellas solo porque me gustaría que duraran un poquito más. Aún así, las recomiendo.",
+  },
+  {
+    name: "Mateo D.",
+    rating: 5,
+    text: "Compré el set para un regalo y quedaron encantados. La presentación es de 10 y el envío fue muy rápido.",
+  },
+  {
+    name: "Lucía P.",
+    rating: 5,
+    text: "La vela de Eucalipto es mi ritual diario para hacer yoga. Crea una atmósfera de paz instantánea. Se nota que están hechas a mano.",
+  },
+  {
+    name: "Carlos H.",
+    rating: 5,
+    text: "Increíble calidad. La mecha de madera hace un sonido sutil como de fogata que me encanta. Un detalle muy premium.",
+  },
+];
+---
+
+<section class="bg-stone-50 py-20 overflow-hidden">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-serif text-stone-800 tracking-tight">
+        Opiniones que nos iluminan
+      </h2>
+      <div class="mt-2 w-20 h-1 bg-amber-200 mx-auto rounded-full"></div>
+    </div>
+
+    <div
+      id="carousel-container"
+      class="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-10 px-4 cursor-grab active:cursor-grabbing"
+    >
+      {
+        reviews.map((review) => (
+          <figure class="min-w-[85%] md:min-w-100 snap-center rounded-2xl bg-white border border-stone-100 p-8 shadow-sm flex flex-col justify-between transition-all duration-300 hover:border-amber-100 hover:shadow-md">
+            <div class="flex flex-col">
+              <div class="flex items-center gap-x-1 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <svg
+                    class={`w-4 h-4 ${i < review.rating ? "text-amber-500" : "text-stone-200"}`}
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M10.868 2.884c.321-.921 1.635-.921 1.956 0l1.413 4.074a1 1 0 00.95.69h4.286c.969 0 1.371 1.24.588 1.81l-3.47 2.522a1 1 0 00-.364 1.118l1.413 4.074c.321.921-.755 1.688-1.54 1.118l-3.47-2.522a1 1 0 00-1.175 0l-3.47 2.522c-.784.57-1.86-.197-1.539-1.118l1.413-4.074a1 1 0 00-.364-1.118L2.093 9.458c-.783-.57-.38-1.81.588-1.81h4.286a1 1 0 00.95-.69l1.413-4.074z" />
+                  </svg>
+                ))}
+              </div>
+
+              <blockquote class="text-stone-700 italic leading-relaxed">
+                <p>"{review.text}"</p>
+              </blockquote>
+            </div>
+
+            <figcaption class="mt-8 pt-6 border-t border-stone-50 flex items-center justify-between">
+              <span class="font-serif font-semibold text-stone-900 tracking-wide">
+                {review.name}
+              </span>
+              <span class="text-[10px] uppercase tracking-widest text-stone-400 font-medium">
+                Verificado
+              </span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Ocultar barra de scroll para una estética limpia */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  const container = document.getElementById("carousel-container");
+  let scrollInterval: number;
+
+  function startAutoScroll() {
+    scrollInterval = setInterval(() => {
+      if (container) {
+        const cardWidth = container.querySelector("figure")?.offsetWidth || 400;
+        const gap = 24; // Gap de 6 (24px)
+
+        // Si estamos cerca del final, volvemos suavemente al inicio
+        if (
+          container.scrollLeft + container.offsetWidth >=
+          container.scrollWidth - 10
+        ) {
+          container.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          container.scrollBy({ left: cardWidth + gap, behavior: "smooth" });
+        }
+      }
+    }, 4000); // 4 segundos entre cada deslizamiento
+  }
+
+  // Eventos para pausar el carrusel cuando el usuario lo toca o pone el mouse
+  container?.addEventListener("mouseenter", () =>
+    clearInterval(scrollInterval)
+  );
+  container?.addEventListener("mouseleave", startAutoScroll);
+  container?.addEventListener(
+    "touchstart",
+    () => clearInterval(scrollInterval),
+    { passive: true }
+  );
+  container?.addEventListener("touchend", startAutoScroll, { passive: true });
+
+  // Iniciar al cargar
+  startAutoScroll();
+</script>

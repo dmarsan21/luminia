@@ -1,0 +1,76 @@
+---
+import { Image } from "astro:assets";
+import vela1 from "../assets/images/vela1.png";
+import vela2 from "../assets/images/vela2.png";
+
+const featured = [
+  {
+    name: "Edición Limitada: Lavanda & Oro",
+    description:
+      "Nuestra mezcla más exclusiva, diseñada para noches de meditación profunda.",
+    price: "$420 MXN",
+    image: vela1,
+    tag: "Exclusivo",
+  },
+  {
+    name: "Pack Bienestar Total",
+    description:
+      "Un set de tres aromas curados para acompañar cada momento de tu día.",
+    price: "$850 MXN",
+    image: vela2,
+    tag: "Best Seller",
+  },
+];
+---
+
+<section class="py-24 bg-stone-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <div
+      class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4"
+    >
+      <div>
+        <span
+          class="text-amber-700 text-xs uppercase tracking-[0.3em] font-bold"
+          >Curaduría Lumina</span
+        >
+        <h2 class="text-4xl font-serif text-stone-900 mt-2">
+          Favoritos de la Temporada
+        </h2>
+      </div>
+      <a
+        href="/tienda"
+        class="text-sm uppercase tracking-widest border-b border-stone-900 pb-1 hover:text-amber-800 hover:border-amber-800 transition-all"
+      >
+        Ver toda la colección
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      {
+        featured.map((item) => (
+          <div class="group cursor-pointer">
+            <div class="relative aspect-16/10 overflow-hidden rounded-2xl">
+              <img
+                src={item.image.src}
+                alt={item.name}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold text-stone-900">
+                {item.tag}
+              </span>
+            </div>
+            <div class="mt-6 flex justify-between items-start">
+              <div>
+                <h3 class="text-xl font-serif text-stone-900">{item.name}</h3>
+                <p class="text-stone-500 text-sm mt-1 max-w-xs">
+                  {item.description}
+                </p>
+              </div>
+              <p class="font-medium text-stone-900">{item.price}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
