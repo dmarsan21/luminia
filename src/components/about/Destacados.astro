@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import vela1 from "../../assets/images/vela1.png";
+import vela2 from "../../assets/images/vela2.png";
+import vela3 from "../../assets/images/vela3.png";
+
+const destacados = [
+  {
+    img: vela1,
+    alt: "Vela aroma lavanda premium",
+    nombre: "Lavanda Premium",
+    desc: "Relajante y fresca, elaborada con cera 100% natural.",
+    badge: "Más vendido",
+  },
+  {
+    img: vela2,
+    alt: "Vela aroma vainilla gourmet",
+    nombre: "Vainilla Gourmet",
+    desc: "Dulce y acogedora, con notas cálidas que envuelven tu espacio.",
+    badge: "Quedan pocas piezas",
+  },
+  {
+    img: vela3,
+    alt: "Vela aroma cítricos energizante",
+    nombre: "Cítricos Vitales",
+    desc: "Energizante y vibrante, perfecta para revitalizar tu hogar.",
+    badge: "Lo más nuevo",
+  },
+];
+---
+
+<section class="py-16 bg-stone-50">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-4xl md:text-5xl font-serif text-yellow-600 mb-4">
+      Productos destacados
+    </h2>
+    <div class="w-24 h-1 bg-yellow-500 mx-auto mb-12"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      {
+        destacados.map((p) => (
+          <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden relative">
+            <!-- Imagen con badge -->
+            <div class="relative">
+              <Image src={p.img} alt={p.alt} class="w-full h-64 object-cover" />
+              {p.badge && (
+                <span class="absolute top-4 left-4 bg-black/70 text-white text-xs uppercase tracking-wide px-3 py-1 rounded">
+                  {p.badge}
+                </span>
+              )}
+            </div>
+
+            <!-- Contenido -->
+            <div class="p-6 space-y-4">
+              <h3 class="text-xl font-serif text-stone-900">{p.nombre}</h3>
+              <p class="text-stone-600 text-sm leading-relaxed">{p.desc}</p>
+              <button class="mt-4 bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+                Comprar ahora
+              </button>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

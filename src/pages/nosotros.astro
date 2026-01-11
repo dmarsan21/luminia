@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroAbout from "../components/about/HeroAbout.astro";
+import HistoriaContenido from "../components/about/HistoriaContenido.astro";
+import Valores from "../components/about/Valores.astro";
+import Quote from "../components/about/Quote.astro";
+import Destacados from "../components/about/Destacados.astro";
+import "../styles/global.css";
+---
+
+<Layout title="Nuestra Historia | LUMINA">
+  <main>
+    <HeroAbout />
+
+    <div class="space-y-16 md:space-y-20 mb-0">
+      <HistoriaContenido />
+      <Valores />
+      <Destacados />
+      <Quote />
+    </div>
+  </main>
+</Layout>

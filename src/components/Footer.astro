@@ -1,12 +1,22 @@
 ---
-// src/components/Footer.astro
-const quickLinks = [
+type Link = {
+  href: string;
+  text: string;
+};
+
+type SocialLink = {
+  label: string;
+  href: string;
+  icon: string;
+};
+
+const quickLinks: Link[] = [
   { href: "/tienda", text: "Velas" },
   { href: "/cuidado", text: "Cuidado de la vela" },
   { href: "/faq", text: "Preguntas Frecuentes" },
 ];
 
-const socialLinks = [
+const socialLinks: SocialLink[] = [
   {
     label: "Facebook",
     href: "#",
@@ -25,10 +35,10 @@ const socialLinks = [
 ];
 ---
 
-<footer class="bg-stone-50 border-t border-stone-200">
-  <div class="max-w-7xl mx-auto px-6 py-20">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8">
-      <div class="lg:col-span-2 space-y-6">
+<footer class="bg-stone-50 border-t border-stone-200 pt-2">
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+      <div class="lg:col-span-2 space-y-4">
         <a
           href="/"
           class="text-3xl font-serif tracking-[0.3em] text-stone-900 block uppercase"
@@ -43,17 +53,17 @@ const socialLinks = [
 
       <div>
         <h4
-          class="text-[11px] uppercase tracking-[0.2em] font-bold text-stone-900 mb-6"
+          class="text-xs uppercase tracking-[0.2em] font-bold text-stone-900 mb-4"
         >
           Explorar
         </h4>
-        <ul class="space-y-4">
+        <ul class="space-y-3">
           {
-            quickLinks.map((link) => (
+            quickLinks.map((link: Link) => (
               <li>
                 <a
                   href={link.href}
-                  class="text-sm text-stone-500 hover:text-amber-800 transition-colors duration-300 font-light"
+                  class="text-sm text-stone-500 hover:text-yellow-600 transition-colors duration-300 font-light"
                 >
                   {link.text}
                 </a>
@@ -65,17 +75,17 @@ const socialLinks = [
 
       <div>
         <h4
-          class="text-[11px] uppercase tracking-[0.2em] font-bold text-stone-900 mb-6"
+          class="text-xs uppercase tracking-[0.2em] font-bold text-stone-900 mb-4"
         >
           Conecta
         </h4>
-        <div class="flex items-center space-x-6">
+        <div class="flex items-center space-x-5">
           {
-            socialLinks.map((social) => (
+            socialLinks.map((social: SocialLink) => (
               <a
                 href={social.href}
                 aria-label={social.label}
-                class="text-stone-400 hover:text-stone-900 transition-colors"
+                class="text-stone-500 hover:text-yellow-600 transition-colors"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d={social.icon} />
@@ -85,7 +95,7 @@ const socialLinks = [
           }
         </div>
         <p
-          class="mt-6 text-[10px] text-stone-400 uppercase tracking-[0.2em] font-medium italic"
+          class="mt-4 text-[10px] text-stone-400 uppercase tracking-[0.2em] font-medium italic"
         >
           #IluminaTuMomento
         </p>
@@ -93,20 +103,20 @@ const socialLinks = [
     </div>
   </div>
 
-  <div class="border-t border-stone-100 py-8 bg-stone-100/50">
+  <div class="border-t border-stone-100 py-6 bg-stone-100/50">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
         <p class="text-[10px] uppercase tracking-widest text-stone-400">
           &copy; {new Date().getFullYear()} LUMINA. Esencia & Luz.
         </p>
 
         <div
-          class="flex items-center gap-6 text-[10px] uppercase tracking-[0.15em] text-stone-400"
+          class="flex items-center gap-4 text-[10px] uppercase tracking-[0.15em] text-stone-400"
         >
           <p>
             Hospedado por <a
               href="#"
-              class="text-stone-600 hover:text-stone-900 transition-colors font-semibold"
+              class="text-stone-600 hover:text-yellow-600 transition-colors font-semibold"
               >Rock Hosting Plus</a
             >
           </p>
@@ -114,7 +124,7 @@ const socialLinks = [
           <p>
             Diseño <a
               href="#"
-              class="text-stone-600 hover:text-stone-900 transition-colors font-semibold"
+              class="text-stone-600 hover:text-yellow-600 transition-colors font-semibold"
               >Devmarsan</a
             >
           </p>

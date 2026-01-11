@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import vela2 from "../../assets/images/vela2.png";
+---
+
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <!-- Texto narrativo -->
+      <div class="space-y-8">
+        <h2
+          class="text-4xl md:text-5xl font-serif text-stone-900 tracking-wide relative"
+        >
+          El origen
+          <span class="block w-16 h-1 bg-yellow-500 mt-4"></span>
+        </h2>
+
+        <p
+          class="text-stone-700 font-light leading-relaxed text-lg max-w-xl drop-shadow-sm"
+        >
+          <strong>LUMINA</strong> nació de un anhelo sencillo: devolver la calma a
+          los espacios de cada día. Lo que inició como un pequeño taller artesanal
+          se transformó en un refugio para quienes buscan belleza en lo esencial.
+        </p>
+
+        <p
+          class="text-stone-700 font-light leading-relaxed text-lg max-w-xl drop-shadow-sm"
+        >
+          No ofrecemos simples objetos; elegimos piezas que acompañan tu vida,
+          que maduran con gracia y llenan cada rincón de luz y calidez.
+        </p>
+      </div>
+
+      <!-- Imagen local -->
+      <div
+        class="aspect-4/5 bg-stone-50 overflow-hidden shadow-xl rounded-lg border border-yellow-500/30"
+      >
+        <Image
+          src={vela2}
+          alt="Vela aromática artesanal"
+          class="w-full h-full object-cover"
+          quality="max"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+</section>
