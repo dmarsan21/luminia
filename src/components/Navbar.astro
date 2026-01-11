@@ -7,118 +7,226 @@ const navLinks = [
 ];
 ---
 
-<nav
-  class="sticky top-0 z-50 w-full bg-stone-50/90 backdrop-blur-md border-b border-stone-100"
->
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex items-center justify-between h-20 md:h-24">
-      <div class="hidden md:flex items-center space-x-10 flex-1">
-        {
-          navLinks.slice(0, 2).map((link) => (
-            <a
-              href={link.href}
-              class="text-[11px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-900 transition-colors duration-300 font-medium"
-            >
-              {link.text}
-            </a>
-          ))
-        }
-      </div>
+<nav id="main-nav" class="nav-container">
+  <div class="max-w-7xl mx-auto px-6 h-full flex items-center">
+    <div class="hidden md:flex flex-1 items-center space-x-10">
+      {
+        navLinks.slice(0, 2).map((link) => (
+          <a href={link.href} class="desktop-link">
+            {link.text}
+          </a>
+        ))
+      }
+    </div>
 
-      <div class="shrink-0">
-        <a
-          href="/"
-          class="text-2xl md:text-3xl font-serif tracking-[0.4em] text-stone-900"
+    <div class="flex-none z-110">
+      <a href="/" class="logo-text">LUMINA</a>
+    </div>
+
+    <div
+      class="flex-1 flex items-center justify-end space-x-4 md:space-x-8 z-110"
+    >
+      <a href="/contacto" class="hidden md:block desktop-link">Contacto</a>
+
+      <button class="icon-button" aria-label="Carrito">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"
+          ></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"
+          ></path></svg
         >
-          LUMINA
-        </a>
-      </div>
+      </button>
 
-      <div class="flex items-center justify-end space-x-4 md:space-x-10 flex-1">
-        <a
-          href="/contacto"
-          class="hidden md:block text-[11px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-900 transition-colors duration-300 font-medium"
-        >
-          Contacto
-        </a>
-
-        <button class="relative p-2" aria-label="Carrito">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5 text-stone-800"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.2"
-              d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-          </svg>
-        </button>
-
-        <button id="menu-button" class="md:hidden text-stone-800 p-2 z-60">
-          <svg
-            id="menu-icon"
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              id="path1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M4 8h16M4 16h16"></path>
-          </svg>
-        </button>
-      </div>
+      <button id="menu-button" class="md:hidden p-2" aria-label="Abrir menú">
+        <div class="hamburger">
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </button>
     </div>
   </div>
 
-  <div
-    id="mobile-menu"
-    class="fixed inset-0 bg-stone-50 z-50 flex flex-col items-center justify-center space-y-8 opacity-0 pointer-events-none transition-all duration-500"
-  >
-    {
-      navLinks.map((link) => (
-        <a
-          href={link.href}
-          class="text-2xl font-serif text-stone-800 tracking-widest"
-        >
-          {link.text}
-        </a>
-      ))
-    }
-    <div class="pt-8 border-t border-stone-200 w-24"></div>
-    <p class="text-[10px] uppercase tracking-[0.3em] text-stone-400">
-      Esencia & Luz
-    </p>
+  <div id="mobile-menu" class="mobile-overlay">
+    <div class="menu-content">
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="mobile-link">
+            {link.text}
+          </a>
+        ))
+      }
+      <div class="divider"></div>
+      <p class="tagline">Esencia & Luz</p>
+    </div>
   </div>
 </nav>
 
+<style>
+  .nav-container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #fafaf9; /* Color sólido forzado */
+    border-bottom: 1px solid #e7e5e4;
+    z-index: 100;
+  }
+
+  .logo-text {
+    font-family: serif;
+    font-size: 1.25rem;
+    md-font-size: 1.8rem;
+    letter-spacing: 0.4em;
+    color: #1c1917;
+    text-decoration: none;
+    display: block;
+  }
+
+  .icon-button {
+    color: #1c1917;
+    padding: 8px;
+    transition: opacity 0.3s;
+  }
+
+  /* ESTADO DEL MENÚ MÓVIL */
+  .mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #fafaf9 !important; /* Fondo crema sólido */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 105;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease-in-out;
+  }
+
+  :global(body.is-menu-open) .mobile-overlay {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .mobile-link {
+    font-family: serif;
+    font-size: 1.25rem;
+    color: #1c1917;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    text-decoration: none;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background-color: #d6d3d1;
+    margin: 0.5rem 0;
+  }
+
+  .tagline {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: #a8a29e;
+  }
+
+  /* HAMBURGER */
+  .hamburger {
+    width: 22px;
+    height: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .line {
+    width: 100%;
+    height: 1px;
+    background-color: #1c1917;
+    transition: all 0.3s ease;
+  }
+
+  :global(body.is-menu-open) .line:nth-child(1) {
+    transform: translateY(5.5px) rotate(45deg);
+  }
+  :global(body.is-menu-open) .line:nth-child(2) {
+    transform: translateY(-5.5px) rotate(-45deg);
+  }
+
+  /* DESKTOP LINKS */
+  .desktop-link {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #78716c;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .desktop-link:hover {
+    color: #1c1917;
+  }
+
+  /* Bloquear scroll */
+  :global(body.is-menu-open) {
+    overflow: hidden;
+  }
+</style>
+
 <script>
-  const menuButton = document.getElementById("menu-button");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const menuIcon = document.getElementById("path1");
+  function setupMenu() {
+    const btn = document.getElementById("menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-  let isMenuOpen = false;
+    if (btn && mobileMenu) {
+      // Definimos el cierre del menú
+      const closeMenu = () => {
+        document.body.classList.remove("is-menu-open");
+      };
 
-  menuButton?.addEventListener("click", () => {
-    isMenuOpen = !isMenuOpen;
+      // Corregimos el error tipando el evento 'e' como MouseEvent
+      const toggleMenu = (e: MouseEvent) => {
+        e.stopPropagation();
+        document.body.classList.toggle("is-menu-open");
+      };
 
-    if (isMenuOpen) {
-      mobileMenu?.classList.remove("opacity-0", "pointer-events-none");
-      mobileMenu?.classList.add("opacity-100", "pointer-events-all");
-      menuIcon?.setAttribute("d", "M6 18L18 6M6 6l12 12"); // Cambia a "X"
-      document.body.style.overflow = "hidden"; // Evita scroll
-    } else {
-      mobileMenu?.classList.add("opacity-0", "pointer-events-none");
-      mobileMenu?.classList.remove("opacity-100", "pointer-events-all");
-      menuIcon?.setAttribute("d", "M4 8h16M4 16h16"); // Vuelve a hamburguesa
-      document.body.style.overflow = "";
+      // Limpiar y asignar evento al botón
+      btn.removeEventListener("click", toggleMenu as any);
+      btn.addEventListener("click", toggleMenu as any);
+
+      // Cerrar al hacer clic en links
+      const links = mobileMenu.querySelectorAll("a");
+      links.forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      // Cerrar al hacer clic en el fondo
+      mobileMenu.addEventListener("click", (e: MouseEvent) => {
+        if (e.target === mobileMenu) {
+          closeMenu();
+        }
+      });
     }
-  });
+  }
+
+  setupMenu();
+  document.addEventListener("astro:after-swap", setupMenu);
 </script>
