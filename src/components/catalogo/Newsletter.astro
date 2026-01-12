@@ -1,0 +1,50 @@
+---
+
+---
+
+<section id="newsletter" class="py-20 bg-black text-white">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-serif mb-6">
+      Suscríbete a nuestro Newsletter
+    </h2>
+    <p class="text-gray-300 mb-8 text-lg md:text-xl font-light">
+      Recibe un <span class="text-[#FFD700] font-semibold"
+        >10% de descuento</span
+      > en tu primera compra y descubre nuestras ofertas exclusivas.
+    </p>
+
+    <!-- Formulario -->
+    <form
+      class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto"
+      onsubmit="event.preventDefault(); const email = this.querySelector('input').value.trim(); const ok = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email); const msgOk = this.nextElementSibling; const msgErr = msgOk.nextElementSibling; if(ok){ msgOk.classList.remove('hidden'); msgErr.classList.add('hidden'); this.reset(); } else { msgErr.classList.remove('hidden'); msgOk.classList.add('hidden'); }"
+    >
+      <label for="email" class="sr-only">Correo electrónico</label>
+      <input
+        id="email"
+        type="email"
+        placeholder="Tu correo electrónico"
+        class="w-full sm:flex-1 px-4 py-3 rounded-md bg-white text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FFD700]"
+        required
+        aria-describedby="newsletter-help"
+      />
+      <button
+        type="submit"
+        class="bg-[#FFD700] hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded-md transition focus:outline-none focus:ring-2 focus:ring-[#FFD700]"
+      >
+        Suscribirme
+      </button>
+    </form>
+
+    <!-- Mensajes -->
+    <p id="newsletter-help" class="text-xs text-gray-400 mt-3">
+      Al suscribirte aceptas recibir nuestras novedades y promociones. Puedes
+      darte de baja en cualquier momento.
+    </p>
+    <p class="hidden mt-3 text-sm text-green-400">
+      ¡Listo! Te hemos registrado. Revisa tu correo para confirmar.
+    </p>
+    <p class="hidden mt-3 text-sm text-red-400">
+      Por favor, ingresa un correo válido.
+    </p>
+  </div>
+</section>

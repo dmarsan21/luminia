@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+// Si tienes avatares de clientes, puedes importarlos aquí
+// import cliente1 from "../../assets/images/cliente1.png";
+---
+
+<section id="resenas" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-serif text-center mb-12">
+      Lo que dicen nuestros clientes
+    </h2>
+
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Reseña 1 -->
+      <article
+        class="bg-gray-50 rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition"
+      >
+        <!-- Avatar opcional -->
+        <!-- <Image src={cliente1} alt="Cliente 1" class="w-16 h-16 rounded-full mb-4" /> -->
+        <h4 class="text-lg font-semibold mb-2">Ana G.</h4>
+        <p class="text-gray-600 italic mb-4">
+          “Las velas de Lavanda me ayudaron a relajarme después de un día
+          pesado. ¡Increíbles!”
+        </p>
+        <span class="text-[#e6b17e] font-medium">★★★★★</span>
+      </article>
+
+      <!-- Reseña 2 -->
+      <article
+        class="bg-gray-50 rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition"
+      >
+        <h4 class="text-lg font-semibold mb-2">Carlos M.</h4>
+        <p class="text-gray-600 italic mb-4">
+          “La vela de Rosas fue el regalo perfecto para mi pareja. ¡Le encantó!”
+        </p>
+        <span class="text-[#e6b17e] font-medium">★★★★★</span>
+      </article>
+
+      <!-- Reseña 3 -->
+      <article
+        class="bg-gray-50 rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition"
+      >
+        <h4 class="text-lg font-semibold mb-2">Lucía R.</h4>
+        <p class="text-gray-600 italic mb-4">
+          “Me sorprendió la duración de las velas. Aromas intensos y muy
+          agradables.”
+        </p>
+        <span class="text-[#e6b17e] font-medium">★★★★☆</span>
+      </article>
+    </div>
+  </div>
+</section>
