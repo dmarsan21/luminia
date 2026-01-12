@@ -1,0 +1,100 @@
+---
+import PromoBar from "../components/contacto/PromoBar.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Contacto | LUMINA">
+  <PromoBar />
+  <section class="bg-linear-to-b from-stone-50 to-stone-100 py-20 px-6">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+      <!-- Lado izquierdo: texto e info -->
+      <div class="space-y-6">
+        <h1 class="text-4xl font-bold text-stone-900">Contáctanos</h1>
+        <p class="text-lg text-stone-700">
+          ¿Quieres hacer un pedido especial o tienes alguna duda sobre nuestras
+          velas? Escríbenos y te responderemos lo antes posible.
+        </p>
+
+        <div class="space-y-4 text-stone-800">
+          <p class="flex items-center gap-2">
+            📍 <span>Puebla, México</span>
+          </p>
+          <p class="flex items-center gap-2">
+            📞 <span>+52 000 000 0000</span>
+          </p>
+          <p class="flex items-center gap-2">
+            ✉️ <span>contacto@velasaromaticas.com</span>
+          </p>
+        </div>
+
+        <!-- Horario de atención -->
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <h2 class="text-xl font-semibold text-stone-900 mb-2">
+            Horario de atención
+          </h2>
+          <ul class="space-y-1 text-stone-700">
+            <li>Lunes a Viernes: 9:00 am – 6:00 pm</li>
+            <li>Sábados: 10:00 am – 2:00 pm</li>
+            <li>Domingos: Cerrado</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Lado derecho: formulario -->
+      <form
+        action="https://formspree.io/f/tu-endpoint"
+        method="POST"
+        class="bg-white shadow-xl rounded-xl p-8 space-y-6"
+      >
+        <div>
+          <label for="name" class="block text-sm font-semibold text-stone-700">
+            Nombre
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="mt-2 w-full rounded-lg border border-stone-300 px-4 py-2 focus:ring-2 focus:ring-rose-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-semibold text-stone-700">
+            Correo electrónico
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="mt-2 w-full rounded-lg border border-stone-300 px-4 py-2 focus:ring-2 focus:ring-rose-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label
+            for="message"
+            class="block text-sm font-semibold text-stone-700"
+          >
+            Mensaje
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            required
+            class="mt-2 w-full rounded-lg border border-stone-300 px-4 py-2 focus:ring-2 focus:ring-rose-500 focus:outline-none"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-rose-500 hover:bg-rose-600 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition"
+        >
+          Enviar mensaje
+        </button>
+      </form>
+    </div>
+  </section>
+</Layout>

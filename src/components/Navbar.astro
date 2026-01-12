@@ -28,7 +28,7 @@ const navLinks = [
     >
       <a href="/contacto" class="hidden md:block desktop-link">Contacto</a>
 
-      <button class="icon-button" aria-label="Carrito">
+      <button class="relative icon-button" aria-label="Carrito">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -42,6 +42,10 @@ const navLinks = [
           ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"
           ></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"
           ></path></svg
+        >
+        <span
+          class="absolute -top-1 -right-1 bg-rose-500 text-white text-xs rounded-full px-1"
+          >2</span
         >
       </button>
 
@@ -174,15 +178,29 @@ const navLinks = [
 
   /* DESKTOP LINKS */
   .desktop-link {
-    font-size: 10px;
+    position: relative;
+    font-size: 0.875rem; /* 14px */
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
     color: #78716c;
     text-decoration: none;
     transition: color 0.3s;
   }
+  .desktop-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #1c1917;
+    transition: width 0.3s;
+  }
   .desktop-link:hover {
     color: #1c1917;
+  }
+  .desktop-link:hover::after {
+    width: 100%;
   }
 
   /* Bloquear scroll */
