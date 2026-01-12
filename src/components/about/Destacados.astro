@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import vela1 from "../../assets/images/vela1.png";
 import vela2 from "../../assets/images/vela2.png";
 import vela3 from "../../assets/images/vela3.png";
@@ -37,30 +38,32 @@ const destacados = [
     <div class="w-24 h-1 bg-yellow-500 mx-auto mb-12"></div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-      {
-        destacados.map((p) => (
-          <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden relative">
-            <!-- Imagen con badge -->
-            <div class="relative">
-              <Image src={p.img} alt={p.alt} class="w-full h-64 object-cover" />
-              {p.badge && (
-                <span class="absolute top-4 left-4 bg-black/70 text-white text-xs uppercase tracking-wide px-3 py-1 rounded">
-                  {p.badge}
-                </span>
-              )}
-            </div>
-
-            <!-- Contenido -->
-            <div class="p-6 space-y-4">
-              <h3 class="text-xl font-serif text-stone-900">{p.nombre}</h3>
-              <p class="text-stone-600 text-sm leading-relaxed">{p.desc}</p>
-              <button class="mt-4 bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
-                Comprar ahora
-              </button>
-            </div>
+      {destacados.map((p) => (
+        <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden relative">
+          <!-- Imagen con badge -->
+          <div class="relative">
+            <Image src={p.img} alt={p.alt} class="w-full h-64 object-cover" />
+            {p.badge && (
+              <span class="absolute top-4 left-4 bg-black/70 text-white text-xs uppercase tracking-wide px-3 py-1 rounded">
+                {p.badge}
+              </span>
+            )}
           </div>
-        ))
-      }
+
+          <!-- Contenido -->
+          <div class="p-6 space-y-4 text-center">
+            <h3 class="text-xl font-serif text-stone-900">{p.nombre}</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">{p.desc}</p>
+            <button
+              aria-label={`Comprar ${p.nombre}`}
+              class="mt-4 inline-flex items-center gap-2 bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition"
+            >
+              <Icon name="mdi:cart" class="w-5 h-5" />
+              Comprar ahora
+            </button>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
